@@ -7,17 +7,20 @@ SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,N
 -- -----------------------------------------------------
 -- Schema CochesLab
 -- -----------------------------------------------------
+-- -----------------------------------------------------
+-- Schema cocheslab
+-- -----------------------------------------------------
 
 -- -----------------------------------------------------
--- Schema CochesLab
+-- Schema cocheslab
 -- -----------------------------------------------------
-CREATE SCHEMA IF NOT EXISTS `CochesLab` DEFAULT CHARACTER SET utf8 ;
-USE `CochesLab` ;
+CREATE SCHEMA IF NOT EXISTS `cocheslab` DEFAULT CHARACTER SET utf8mb3 ;
+USE `cocheslab` ;
 
 -- -----------------------------------------------------
--- Table `CochesLab`.`Cars`
+-- Table `cocheslab`.`cars`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `CochesLab`.`Cars` (
+CREATE TABLE IF NOT EXISTS `cocheslab`.`cars` (
   `idCars` INT NOT NULL AUTO_INCREMENT,
   `VIN` VARCHAR(45) NOT NULL,
   `Manufacturer` VARCHAR(45) NOT NULL,
@@ -25,42 +28,47 @@ CREATE TABLE IF NOT EXISTS `CochesLab`.`Cars` (
   `Year` YEAR NOT NULL,
   `Color` VARCHAR(45) NOT NULL,
   PRIMARY KEY (`idCars`))
-ENGINE = InnoDB;
+ENGINE = InnoDB
+AUTO_INCREMENT = 25
+DEFAULT CHARACTER SET = utf8mb3;
 
 
 -- -----------------------------------------------------
--- Table `CochesLab`.`Customers`
+-- Table `cocheslab`.`customers`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `CochesLab`.`Customers` (
+CREATE TABLE IF NOT EXISTS `cocheslab`.`customers` (
   `idCustomers` INT NOT NULL AUTO_INCREMENT,
   `Customer_ID` INT NOT NULL,
   `Name` VARCHAR(45) NOT NULL,
   `Phone` VARCHAR(45) NOT NULL,
-  `Email` VARCHAR(45) NULL,
+  `Email` VARCHAR(45) NULL DEFAULT NULL,
   `Address` VARCHAR(45) NOT NULL,
   `City` VARCHAR(45) NOT NULL,
+  `State_Province` VARCHAR(45) NOT NULL,
   `Country` VARCHAR(45) NOT NULL,
   `Postal` INT NOT NULL,
   PRIMARY KEY (`idCustomers`))
-ENGINE = InnoDB;
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = utf8mb3;
 
 
 -- -----------------------------------------------------
--- Table `CochesLab`.`Salespersons`
+-- Table `cocheslab`.`salespersons`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `CochesLab`.`Salespersons` (
+CREATE TABLE IF NOT EXISTS `cocheslab`.`salespersons` (
   `idSalespersons` INT NOT NULL AUTO_INCREMENT,
   `Staff_ID` INT NOT NULL,
   `Name` VARCHAR(45) NOT NULL,
   `Store` VARCHAR(45) NOT NULL,
   PRIMARY KEY (`idSalespersons`))
-ENGINE = InnoDB;
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = utf8mb3;
 
 
 -- -----------------------------------------------------
--- Table `CochesLab`.`Invoices`
+-- Table `cocheslab`.`invoices`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `CochesLab`.`Invoices` (
+CREATE TABLE IF NOT EXISTS `cocheslab`.`invoices` (
   `idInvoices` INT NOT NULL AUTO_INCREMENT,
   `Invoice_Number` INT NOT NULL,
   `Date` DATE NOT NULL,
@@ -73,20 +81,15 @@ CREATE TABLE IF NOT EXISTS `CochesLab`.`Invoices` (
   INDEX `fk_Invoices_Customers1_idx` (`Customers_idCustomers` ASC) VISIBLE,
   CONSTRAINT `fk_Invoices_Cars1`
     FOREIGN KEY (`Cars_idCars`)
-    REFERENCES `CochesLab`.`Cars` (`idCars`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
-  CONSTRAINT `fk_Invoices_Salespersons1`
-    FOREIGN KEY (`Salespersons_idSalespersons`)
-    REFERENCES `CochesLab`.`Salespersons` (`idSalespersons`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
+    REFERENCES `cocheslab`.`cars` (`idCars`),
   CONSTRAINT `fk_Invoices_Customers1`
     FOREIGN KEY (`Customers_idCustomers`)
-    REFERENCES `CochesLab`.`Customers` (`idCustomers`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
-ENGINE = InnoDB;
+    REFERENCES `cocheslab`.`customers` (`idCustomers`),
+  CONSTRAINT `fk_Invoices_Salespersons1`
+    FOREIGN KEY (`Salespersons_idSalespersons`)
+    REFERENCES `cocheslab`.`salespersons` (`idSalespersons`))
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = utf8mb3;
 
 
 SET SQL_MODE=@OLD_SQL_MODE;
