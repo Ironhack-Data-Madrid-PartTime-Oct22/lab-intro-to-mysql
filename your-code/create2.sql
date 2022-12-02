@@ -22,7 +22,7 @@ CREATE TABLE IF NOT EXISTS `LAB-MYSQL`.`CARS` (
   `VIN` VARCHAR(45) NOT NULL,
   `Manufacturer` VARCHAR(45) NOT NULL,
   `Model` VARCHAR(45) NOT NULL,
-  `Year` YEAR NOT NULL,
+  `Year` DATETIME NOT NULL,
   `Color` VARCHAR(45) NOT NULL,
   PRIMARY KEY (`idCARS`))
 ENGINE = InnoDB;
@@ -33,24 +33,24 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `LAB-MYSQL`.`CUSTOMERS` (
   `idCUSTOMERS` INT NOT NULL AUTO_INCREMENT,
-  `Customer ID` VARCHAR(45) NOT NULL,
+  `Customer_ID` VARCHAR(45) NOT NULL,
   `Name` VARCHAR(45) NOT NULL,
   `Phone` VARCHAR(13) NOT NULL,
   `Email` VARCHAR(45) NOT NULL,
   `Address` VARCHAR(45) NOT NULL,
   `City` VARCHAR(45) NOT NULL,
-  `State/Province` VARCHAR(45) NOT NULL,
+  `State_Province` VARCHAR(45) NOT NULL,
   `Postal` VARCHAR(45) NOT NULL,
   PRIMARY KEY (`idCUSTOMERS`))
 ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `LAB-MYSQL`.`Salespersons`
+-- Table `LAB-MYSQL`.`SALESPERSONS`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `LAB-MYSQL`.`Salespersons` (
+CREATE TABLE IF NOT EXISTS `LAB-MYSQL`.`SALESPERSONS` (
   `idSalespersons` INT NOT NULL AUTO_INCREMENT,
-  `Staff ID` VARCHAR(45) NOT NULL,
+  `STAFF_ID` VARCHAR(45) NOT NULL,
   `Name` VARCHAR(45) NOT NULL,
   `Store` VARCHAR(45) NOT NULL,
   PRIMARY KEY (`idSalespersons`))
@@ -83,7 +83,7 @@ CREATE TABLE IF NOT EXISTS `LAB-MYSQL`.`Invoices` (
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_Invoices_Salespersons1`
     FOREIGN KEY (`Salespersons_idSalespersons`)
-    REFERENCES `LAB-MYSQL`.`Salespersons` (`idSalespersons`)
+    REFERENCES `LAB-MYSQL`.`SALESPERSONS` (`idSalespersons`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
