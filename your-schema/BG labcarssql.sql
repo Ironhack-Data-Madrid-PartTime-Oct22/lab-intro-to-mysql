@@ -16,11 +16,7 @@ INSERT INTO customers
 VALUES
 (0,"10001","Pablo Picasso","+34 636 17 63 82"," ","Paseo de la Chopera, 14","Madrid","Madrid","Spain",28045),
 (1,"20001","Abraham Lincoln","+1 305 907 7086"," ","120 SW 8th St","Miami","Florida","United States",33130),
-(2,"30001","Napoleon Bonaparte","+33 1 79 75 40 00"," ","40 Rue du Colisée","Paris","Île-de-France","France",75008);
-
-#solo me ha dejado meter el primero, no entiendo porque unos si y otros no
-Error Code: 1062. Duplicate entry '1' for key 'customers.PRIMARY'
-
+(2,"30001","Napoleon Bonaparte","+33 1 79 75 40 00"," ","40 Rue du Colisée", "Paris","Île-de-France","France",75008);
 
 select name, city from customers;
 
@@ -42,5 +38,3 @@ VALUES
 (0,852399038,"2018-08-22",0,1,3),
 (1,731166526,"2018-12-31",3,0,5),
 (2,271135104,"2019-01-22",2,2,7);
-
-#sin el customers no puedo rellenar los invoices
