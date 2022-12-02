@@ -34,7 +34,8 @@ ENGINE = InnoDB;
 CREATE TABLE IF NOT EXISTS `lab_sql_intro`.`Customers` (
   `idCustomers` INT NOT NULL AUTO_INCREMENT,
   `CustomerID` INT NOT NULL,
-  `phone` VARCHAR(15) NOT NULL,
+  `name` VARCHAR(45) NOT NULL,
+  `phone` VARCHAR(20) NOT NULL,
   `email` VARCHAR(45) NOT NULL,
   `address` VARCHAR(200) NOT NULL,
   `city` VARCHAR(45) NOT NULL,
