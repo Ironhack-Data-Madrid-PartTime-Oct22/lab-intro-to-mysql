@@ -34,4 +34,24 @@ VALUES
 (2,"731166526","31-12-2018",4,1,6),
 (3,"271135104","22-01-2019",3,3,8);
 
+UPDATE salesperson
+SET Store="Miami"
+WHERE idSalesperson=5;
+
+UPDATE customers
+SET Email="ppicasso@gmail.com"
+WHERE idCustomers=1;
+
+UPDATE customers
+SET Email="lincoln@us.gov"
+WHERE idCustomers=2;
+
+UPDATE customers
+SET Email="hello@napoleon.me"
+WHERE idCustomers=3;
+
+
+
+
+
 
