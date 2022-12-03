@@ -1,4 +1,7 @@
-SELECT * FROM labsql
+
+
+USE labsql2;
+
 INSERT INTO cars
 VALUES 
 (0, "3K096I98581DHSNUP", "Volkswagen", "Tiguan", 2019, "Blue"),
@@ -27,13 +30,13 @@ where idsalesperson = 4;
 
  INSERT INTO customer
  VALUES
-(0, "10001", "Pablo Picasso", "+34636176382", "ppicasso@gmail.com", "Paseo de la Chopera, 14", "Madrid", "Madrid", "Spain", "28045"),
-(1, "20001", "Abraham Lincoln", "+1 3059077086", "lincoln@us.gov", "120 SW 8th St", "Miami", "Florida", "United States", "33130"),
-(2, "30001", "Napoléon Bonaparte", "+33 179754000", "hello@napoleon.me", "40 Rue du Colisée", "Paris", "Île-de-France", "France", "75008");
+(0, "10001", "Pablo Picasso", 76382, "ppicasso@gmail.com", "Paseo de la Chopera, 14", "Madrid", "Madrid", "Spain", "28045"),
+(3, "20001", "Abraham Lincoln", 7086, "lincoln@us.gov", "120 SW 8th St", "Miami", "Florida", "United States", "33130"),
+(2, "30001", "Napoléon Bonaparte", 4000, "hello@napoleon.me", "40 Rue du Colisée", "Paris", "Île-de-France", "France", "75008");
 
 
 INSERT INTO invoices
 VALUES
-(0, "852399038",  "2018-08-22", 0, 1, 3),
-(1, "731166526", "2018-12-31", 3, 0, 5),
-(2, "271135104", "2019-01-22", 2, 2, 7);
+(5, "852399038",  "2018-08-22", 1, 5, 4),
+(6, "731166526", "2018-12-31", 3, 3, 3),
+(7, "271135104", "2019-01-22", 2, 7, 2);

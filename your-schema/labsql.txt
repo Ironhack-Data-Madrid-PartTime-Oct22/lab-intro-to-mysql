@@ -1,9 +1,12 @@
--- MySQL Workbench Forward Engineering
+--- MySQL Workbench Forward Engineering
 
 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0;
 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION';
 
+-- -----------------------------------------------------
+-- Schema mydb
+-- -----------------------------------------------------
 -- -----------------------------------------------------
 -- Schema labsql
 -- -----------------------------------------------------
@@ -26,7 +29,7 @@ CREATE TABLE IF NOT EXISTS `labsql`.`cars` (
   `color` VARCHAR(45) NOT NULL,
   PRIMARY KEY (`idcars`))
 ENGINE = InnoDB
-AUTO_INCREMENT = 19
+AUTO_INCREMENT = 25
 DEFAULT CHARACTER SET = utf8mb3;
 
 
@@ -37,7 +40,7 @@ CREATE TABLE IF NOT EXISTS `labsql`.`customer` (
   `idcustomer` INT NOT NULL AUTO_INCREMENT,
   `CUSTOMER_ID` VARCHAR(45) NOT NULL,
   `name` VARCHAR(45) NOT NULL,
-  `phone number` INT NOT NULL,
+  `phone number` VARCHAR(45) NOT NULL,
   `email` VARCHAR(45) NOT NULL,
   `address` VARCHAR(200) NOT NULL,
   `city` VARCHAR(200) NOT NULL,
@@ -45,17 +48,6 @@ CREATE TABLE IF NOT EXISTS `labsql`.`customer` (
   `country` VARCHAR(45) NOT NULL,
   `ZIP/postal-code` VARCHAR(200) NOT NULL,
   PRIMARY KEY (`idcustomer`))
-ENGINE = InnoDB
-DEFAULT CHARACTER SET = utf8mb3;
-
-
--- -----------------------------------------------------
--- Table `labsql`.`invoices`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `labsql`.`invoices` (
-  `idINVOICES` INT NOT NULL AUTO_INCREMENT,
-  `date` DATE NOT NULL,
-  PRIMARY KEY (`idINVOICES`))
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8mb3;
 
@@ -69,6 +61,39 @@ CREATE TABLE IF NOT EXISTS `labsql`.`salesperson` (
   `name` VARCHAR(45) NOT NULL,
   `store` VARCHAR(45) NOT NULL,
   PRIMARY KEY (`idsalesperson`))
+ENGINE = InnoDB
+AUTO_INCREMENT = 41
+DEFAULT CHARACTER SET = utf8mb3;
+
+
+-- -----------------------------------------------------
+-- Table `labsql`.`invoices`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `labsql`.`invoices` (
+  `idINVOICES` INT NOT NULL AUTO_INCREMENT,
+  `date` DATE NOT NULL,
+  `salesperson_idsalesperson` INT NOT NULL,
+  `customer_idcustomer` INT NOT NULL,
+  `cars_idcars` INT NOT NULL,
+  PRIMARY KEY (`idINVOICES`),
+  INDEX `fk_invoices_salesperson_idx` (`salesperson_idsalesperson` ASC) VISIBLE,
+  INDEX `fk_invoices_customer1_idx` (`customer_idcustomer` ASC) VISIBLE,
+  INDEX `fk_invoices_cars1_idx` (`cars_idcars` ASC) VISIBLE,
+  CONSTRAINT `fk_invoices_salesperson`
+    FOREIGN KEY (`salesperson_idsalesperson`)
+    REFERENCES `labsql`.`salesperson` (`idsalesperson`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_invoices_customer1`
+    FOREIGN KEY (`customer_idcustomer`)
+    REFERENCES `labsql`.`customer` (`idcustomer`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_invoices_cars1`
+    FOREIGN KEY (`cars_idcars`)
+    REFERENCES `labsql`.`cars` (`idcars`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8mb3;
 
