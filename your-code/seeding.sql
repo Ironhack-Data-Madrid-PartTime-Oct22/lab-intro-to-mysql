@@ -37,7 +37,6 @@ insert into invoices
 values
 (0,852399038,"2018-08-22",1,2,3),
 (1,731166526,"2018-12-31",4,1,5),
-(2,271135104,"2019-01-22",3,3,7);
+(2,271135104,"2019-01-22",3,4,7);
 
-"""noseporque invoices no me ha funcionado he cambiado los indices porq cars y custumers empiezan con id 1 pero aun asi me sale este error"""
-00:07:20	(2,731166526,"2018-12-31",4,1,5), (3,271135104,"2019-01-22",3,3,7)	Error Code: 1064. You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '2,731166526,"2018-12-31",4,1,5), (3,271135104,"2019-01-22",3,3,7)' at line 1	0.000 sec
+-- """noseporque invoices no me ha funcionado he cambiado los indices porq cars y custumers empiezan con id 1 pero aun asi me sale este error"""
