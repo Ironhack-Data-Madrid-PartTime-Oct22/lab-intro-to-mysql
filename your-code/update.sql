@@ -30,12 +30,12 @@ VALUES
     (6,	00007,	"Walter Melon",	"Amsterdam"),
     (7,	00008,	"Shonda Leer", "São Paulo");
     
-select * from salesperson
+select * from salesperson;
 
 INSERT INTO invoices
 VALUES
-		(0,	852399038,	"2018-8-22", 0, 1, 3),
-	(1, 731166526, "2018-12-31", 3, 0, 5),
+		(0,	852399038,	"2018-8-22", 2, 1, 3),
+	(1, 731166526, "2018-12-31", 1, 3, 5),
 	(2, 271135104, "2019-1-22", 2, 2, 7);
 
 select * from invoices

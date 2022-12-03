@@ -29,7 +29,7 @@ CREATE TABLE IF NOT EXISTS `lab`.`cars` (
   `color` VARCHAR(45) NOT NULL,
   PRIMARY KEY (`idcars`))
 ENGINE = InnoDB
-AUTO_INCREMENT = 13
+AUTO_INCREMENT = 26
 DEFAULT CHARACTER SET = utf8mb3;
 
 
@@ -49,7 +49,7 @@ CREATE TABLE IF NOT EXISTS `lab`.`customers` (
   `zip` INT NOT NULL,
   PRIMARY KEY (`idcustomers`))
 ENGINE = InnoDB
-AUTO_INCREMENT = 4
+AUTO_INCREMENT = 8
 DEFAULT CHARACTER SET = utf8mb3;
 
 
@@ -82,19 +82,13 @@ CREATE TABLE IF NOT EXISTS `lab`.`invoices` (
   INDEX `fk_invoices_salesperson1_idx` (`salesperson_idsalesperson` ASC) VISIBLE,
   CONSTRAINT `fk_invoices_cars`
     FOREIGN KEY (`cars_idcars`)
-    REFERENCES `lab`.`cars` (`idcars`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
+    REFERENCES `lab`.`cars` (`idcars`),
   CONSTRAINT `fk_invoices_customers1`
     FOREIGN KEY (`customers_idcustomers`)
-    REFERENCES `lab`.`customers` (`idcustomers`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
+    REFERENCES `lab`.`customers` (`idcustomers`),
   CONSTRAINT `fk_invoices_salesperson1`
     FOREIGN KEY (`salesperson_idsalesperson`)
-    REFERENCES `lab`.`salesperson` (`idsalesperson`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
+    REFERENCES `lab`.`salesperson` (`idsalesperson`))
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8mb3;
 
